@@ -6,24 +6,19 @@ cd "$ROOT"
 
 fail() { echo "pre-commit: $1" >&2; exit 1; }
 
-# Gestagede Dateien (Added/Copied/Modified/Renamed)
 mapfile -t STAGED < <(git diff --cached --name-only --diff-filter=ACMR || true)
 [[ ${#STAGED[@]} -eq 0 ]] && exit 0
 
-# Secrets und private Zustände
-SECRET_PAT='(^|/)·?env(·|$)|\.pem$|\.key$|\.p12$|(^|/)id_rsa|(^|/)secrets/|_state\.md$'
 for f in "${STAGED[@]}"; do
   if echo "$f" | grep -Eq '\.env($|\.)|\.pem$|\.key$|\.p12$|(^|/)id_rsa|(^|/)secrets/|_state\.md$'; then
     fail "Secret-verdächtige Datei nicht committen: $f"
   fi
 done
 
-# Keine offensichtlichen Schlüssel im Patch
 if git diff --cached -U0 | grep -Eiq '-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----'; then
   fail "Privater Schlüssel im Diff. Commit abgebrochen."
 fi
 
-# JSON der Beispiele muss parsebar sein
 for f in "${STAGED[@]}"; do
   case "$f" in
     schema/examples/*/*.json|schema/*.json)
@@ -33,7 +28,6 @@ for f in "${STAGED[@]}"; do
   esac
 done
 
-# Schema-Kante, wenn Schemas, Beispiele oder Validator betroffen
 NEED_VALIDATE=0
 for f in "${STAGED[@]}"; do
   case "$f" in
