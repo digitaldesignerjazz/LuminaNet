@@ -17,11 +17,15 @@ Schwerpunkte:
 
 ## Status
 
-Repository soeben eröffnet. Struktur und erste Artefakte folgen schrittweise.
+**v0.1 Entwurf** — erste öffentliche Spezifikationen liegen.
 
-Aktueller Stand: **Bootstrap** — README, Lizenz, Grundgerüst.
+| Pfad | Inhalt |
+|---|---|
+| [docs/01-architecture.md](docs/01-architecture.md) | Schichten, Vertrauensgrenzen, Envelope, Topics |
+| [proto/lumina-protocol-v0.1.md](proto/lumina-protocol-v0.1.md) | Lumina-Knoten, Scene-Objekt, Safety |
+| [agents/public-interface-v0.1.md](agents/public-interface-v0.1.md) | Rollen, Caps, Ask/Say/Handoff |
 
-## Geplante Struktur
+## Struktur
 
 ```
 LuminaNet/
@@ -39,10 +43,11 @@ LuminaNet/
 - Modular, selbst-dokumentierend, testbar.
 - Privacy by design. Keine Secrets im Repository.
 - Evolution statt Big-Bang: kleine, nachvollziehbare Commits.
+- Licht darf nach Partition nicht von allein eskalieren.
 
 ## Mitwirken
 
-Issues und Pull Requests sind willkommen, sobald die Grundstruktur steht. Bitte keine Zugangsdaten, private Keys oder personenbezogene Daten committen.
+Issues und Pull Requests sind willkommen. Bitte keine Zugangsdaten, private Keys oder personenbezogene Daten committen.
 
 ## Lizenz
 
