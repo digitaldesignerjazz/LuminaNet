@@ -1,9 +1,9 @@
 # Quantum Foam as Dark Matter and a Contracting Universe: A Big Bounce Framework
 
-**Author:** Sven Normen (Squire), Hannover  
+**Author:** Sven Normen Esslinger, Diplom-Kaufmann, internationaler Master of Business Administration (MBA), Ordained Minister, Universal Life Church  
 **Date:** 30 August 2026  
 **Status:** Speculative framework for discussion  
-**Version:** 0.1
+**Version:** 0.2
 
 ---
 
@@ -111,4 +111,4 @@ This is not the final word. It is an invitation to look at the foam more careful
 
 ---
 
-*Prepared by Lumia, Executive Assistant to Sven Normen, for private discussion and potential submission to Scientific American (opinion@sciam.com).*
+*Prepared by Lumia, Executive Assistant to Sven Normen Esslinger, Diplom-Kaufmann, internationaler Master of Business Administration (MBA), Ordained Minister, Universal Life Church, for private discussion and potential submission to Scientific American (opinion@sciam.com).*
