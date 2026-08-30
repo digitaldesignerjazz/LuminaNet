@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/digitaldesignerjazz/LuminaNet/schema/agent-message.schema.json",
+  "title": "LuminaNet Agent Message Bodies v0.1",
+  "description": "Body-Varianten für agent.* Topics. Wird im Envelope unter body eingesetzt.",
+  "oneOf": [
+    { "$ref": "#/$defs/hello" },
+    { "$ref": "#/$defs/ask" },
+    { "$ref": "#/$defs/say" },
+    { "$ref": "#/$defs/handoff" },
+    { "$ref": "#/$defs/nack" }
+  ],
+  "$defs": {
+    "hello": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "proto", "caps"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["lumia", "elara", "lyra", "xen", "orchestrator"]
+        },
+        "proto": { "const": "0.1" },
+        "caps": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._:-]{1,64}$"
+          },
+          "uniqueItems": true
+        },
+        "languages": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 2, "maxLength": 8 },
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "availability": {
+          "type": "string",
+          "enum": ["local-mesh", "public-read", "closed"]
+        }
+      }
+    },
+    "ask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intent"],
+      "properties": {
+        "intent": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{1,64}$"
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mood": { "type": "string", "maxLength": 32 },
+            "zone": { "type": "string", "maxLength": 64 },
+            "priority": { "type": "integer", "minimum": 0, "maximum": 4 },
+            "note": { "type": "string", "maxLength": 500 }
+          }
+        },
+        "expect": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "enum": ["scene.set", "agent.say", "agent.handoff", "agent.nack"]
+          }
+        }
+      }
+    },
+    "say": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ok", "intent"],
+      "properties": {
+        "ok": { "type": "boolean" },
+        "intent": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{1,64}$"
+        },
+        "result": { "type": "object" },
+        "next": {
+          "type": ["string", "null"],
+          "enum": ["agent.handoff", "scene.set", null]
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["to_role", "reason"],
+      "properties": {
+        "to_role": {
+          "type": "string",
+          "enum": ["lumia", "elara", "lyra", "xen", "orchestrator"]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9._:-]+$"
+        },
+        "brief": {
+          "type": "string",
+          "maxLength": 280
+        }
+      }
+    },
+    "nack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "unknown-intent",
+            "ambiguous",
+            "out-of-cap",
+            "unsafe",
+            "partition",
+            "rate-limit"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "maxLength": 200
+        }
+      }
+    }
+  }
+}

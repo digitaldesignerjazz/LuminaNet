@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/digitaldesignerjazz/LuminaNet/schema/scene.schema.json",
+  "title": "LuminaNet Scene v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scene_id", "priority", "channels"],
+  "properties": {
+    "scene_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "description": "0 idle, 1 comfort, 2 task, 3 signal, 4 safety"
+    },
+    "hold_s": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400
+    },
+    "channels": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 8,
+      "additionalProperties": { "$ref": "#/$defs/channel" },
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9_-]{1,32}$"
+      }
+    },
+    "rhythm": { "$ref": "#/$defs/rhythm" }
+  },
+  "$defs": {
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["off", "rgb", "tunable-white", "rgbw"]
+        },
+        "rgb": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "integer", "minimum": 0, "maximum": 255 }
+        },
+        "kelvin": {
+          "type": "integer",
+          "minimum": 1800,
+          "maximum": 6500
+        },
+        "nits": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20000
+        },
+        "white": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "ease_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60000
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "rgb" } }, "required": ["mode"] },
+          "then": { "required": ["rgb"] }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "tunable-white" } }, "required": ["mode"] },
+          "then": { "required": ["kelvin"] }
+        }
+      ]
+    },
+    "rhythm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["none", "breathe", "pulse"]
+        },
+        "period_ms": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 60000,
+          "description": "Untergrenze 2s — kein Strobe in v0.1"
+        },
+        "depth": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.25
+        }
+      }
+    }
+  }
+}

@@ -17,13 +17,15 @@ Schwerpunkte:
 
 ## Status
 
-**v0.1 Entwurf** — erste öffentliche Spezifikationen liegen.
+**v0.1 Entwurf** — Spezifikation, Protokoll, Agenten-Schnittstelle, Overlay-Hinweise und JSON-Schema.
 
 | Pfad | Inhalt |
 |---|---|
 | [docs/01-architecture.md](docs/01-architecture.md) | Schichten, Vertrauensgrenzen, Envelope, Topics |
 | [proto/lumina-protocol-v0.1.md](proto/lumina-protocol-v0.1.md) | Lumina-Knoten, Scene-Objekt, Safety |
 | [agents/public-interface-v0.1.md](agents/public-interface-v0.1.md) | Rollen, Caps, Ask/Say/Handoff |
+| [mesh/overlay-hints-v0.1.md](mesh/overlay-hints-v0.1.md) | Adressierung, TTL, Partition, Trust-Muster |
+| [schema/](schema/) | JSON Schema für Envelope, Scene, Agent-Bodies |
 
 ## Struktur
 
@@ -33,6 +35,7 @@ LuminaNet/
 ├── proto/         Hardware- und Firmware-Skizzen (Lumina)
 ├── mesh/          Overlay-Konfigurationen und Peer-Hinweise
 ├── agents/        Öffentliche Agenten-Schnittstellen und Prompt-Muster
+├── schema/        Maschinenlesbare JSON-Schemas
 ├── infra/         Deployment-Notizen, Container, Monitoring-Hooks
 └── LICENSE
 ```
@@ -44,6 +47,7 @@ LuminaNet/
 - Privacy by design. Keine Secrets im Repository.
 - Evolution statt Big-Bang: kleine, nachvollziehbare Commits.
 - Licht darf nach Partition nicht von allein eskalieren.
+- Schema prüft Form, nicht Vertrauen.
 
 ## Mitwirken
 

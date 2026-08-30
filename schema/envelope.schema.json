@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/digitaldesignerjazz/LuminaNet/schema/envelope.schema.json",
+  "title": "LuminaNet Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["v", "id", "ts", "from", "to", "body"],
+  "properties": {
+    "v": {
+      "const": "0.1",
+      "description": "Protokollversion des Envelopes"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "description": "ULID, UUID oder vergleichbare eindeutige Nachricht-ID"
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ttl_s": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 86400,
+      "default": 30
+    },
+    "in_reply_to": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "from": { "$ref": "#/$defs/addr" },
+    "to": { "$ref": "#/$defs/addr" },
+    "body": {
+      "type": "object",
+      "description": "Topic-spezifischer Körper. Siehe scene.schema.json und agent-message.schema.json."
+    }
+  },
+  "$defs": {
+    "addr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class"],
+      "properties": {
+        "class": {
+          "type": "string",
+          "enum": ["lumina", "mesh", "agent", "infra", "operator"]
+        },
+        "role": {
+          "type": "string",
+          "enum": ["lumia", "elara", "lyra", "xen", "orchestrator"]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9._:-]+$"
+        },
+        "topic": {
+          "$ref": "#/$defs/topic"
+        },
+        "zone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9._:-]+$"
+        }
+      }
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "scene.set",
+        "scene.get",
+        "scene.clear",
+        "node.hello",
+        "node.caps",
+        "node.bye",
+        "sense.sample",
+        "agent.hello",
+        "agent.caps",
+        "agent.ask",
+        "agent.say",
+        "agent.handoff",
+        "agent.nack",
+        "mesh.ping",
+        "mesh.pong",
+        "mesh.partition"
+      ]
+    }
+  }
+}
