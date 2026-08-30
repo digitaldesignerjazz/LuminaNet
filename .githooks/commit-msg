@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Erste Zeile: type: subject — kurz, keine Secrets.
+set -euo pipefail
+MSG_FILE="$1"
+SUBJECT=$(head -n 1 "$MSG_FILE" | tr -d '\r')
+
+if [[ -z "$SUBJECT" ]]; then
+  echo "commit-msg: leere Betreffzeile" >&2
+  exit 1
+fi
+
+if [[ ${#SUBJECT} -gt 72 ]]; then
+  echo "commit-msg: Betreff länger als 72 Zeichen" >&2
+  exit 1
+fi
+
+if echo "$SUBJECT" | grep -Eiq 'BEGIN PRIVATE KEY|api[_-]?key=|password='; then
+  echo "commit-msg: Secret in der Betreffzeile" >&2
+  exit 1
+fi
+
+# lockerer Konventionscheck, nicht dogmatisch
+if ! echo "$SUBJECT" | grep -Eq '^(feat|fix|docs|chore|test|refactor|style|infra|proto|agents|mesh)(\([^)]+\))?: .+'; then
+  echo "commit-msg: Hinweis — erwartet 'type: subject' (feat|fix|docs|chore|test|refactor|style|infra|proto|agents|mesh)"
+  echo "commit-msg: genommen: $SUBJECT"
+fi
+
+exit 0

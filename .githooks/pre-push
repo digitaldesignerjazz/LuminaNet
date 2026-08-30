@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Vor push: Kante halten, wenn jsonschema da ist.
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if python3 -c "import jsonschema" >/dev/null 2>&1; then
+  python3 tools/validate.py || {
+    echo "pre-push: validate.py gescheitert — push abgebrochen" >&2
+    exit 1
+  }
+else
+  echo "pre-push: jsonschema fehlt — Form nicht geprüft"
+fi
+
+exit 0
