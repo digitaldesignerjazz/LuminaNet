@@ -1,0 +1,35 @@
+# Secrets & keys — niemals committen
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+id_rsa*
+secrets/
+
+# Local agent / skilllogin state
+artifacts/nexus/ai_agents/*_state.md
+*.local.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build / deps
+node_modules/
+dist/
+build/
+target/
+__pycache__/
+*.pyc
+.venv/
+vvenv/
+
+# Logs & temp
+*.log
+.tmp/
+tmp/
