@@ -29,9 +29,12 @@ Schwerpunkte:
 | [tools/validate.py](tools/validate.py) | Kantenprüfer |
 
 ```bash
-pip install -r tools/requirements.txt
-python tools/validate.py
+sudo apt install -y python3 python3-jsonschema
+git pull
+./tools/run-validate.sh
 ```
+
+Siehe auch [tools/README.md](tools/README.md).
 
 ## Struktur
 

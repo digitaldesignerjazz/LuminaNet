@@ -12,24 +12,18 @@ Maschinenlesbare Verträge zur öffentlichen Schicht.
 ## Prüfen
 
 ```bash
-pip install -r tools/requirements.txt
-python tools/validate.py
+sudo apt install -y python3 python3-jsonschema
+./tools/run-validate.sh
+```
+
+oder:
+
+```bash
+python3 -m pip install --user -r tools/requirements.txt
+python3 tools/validate.py
 ```
 
 Das Script verlangt: alles unter `examples/valid/` gilt, alles unter `examples/invalid/` scheitert. CI auf `main` läuft dieselbe Kante.
-
-## Nutzung im eigenen Code
-
-```python
-import json
-from pathlib import Path
-from jsonschema import Draft202012Validator
-
-schema = json.loads(Path("schema/envelope.schema.json").read_text())
-Draft202012Validator(schema).validate(envelope)
-```
-
-`$id` zeigt auf dieses Repository. Breaking Changes erhöhen die Envelope-Version `v` und bekommen neue Dateien, alte Schemas bleiben stehen.
 
 ## Grenzen
 

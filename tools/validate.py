@@ -15,8 +15,11 @@ try:
     from jsonschema import Draft202012Validator
     from jsonschema.exceptions import ValidationError
 except ImportError:
-    sys.stderr.write("jsonschema fehlt. pip install jsonschema\n")
-    sys.exit  = sys.exit
+    sys.stderr.write(
+        "jsonschema fehlt.\n"
+        "  sudo apt install python3-jsonschema\n"
+        "  oder: python3 -m pip install -r tools/requirements.txt\n"
+    )
     raise SystemExit(2)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,7 +75,6 @@ def looks_like_scene(doc: dict) -> bool:
 
 
 def check_document(doc: dict) -> None:
-    """Raise ValidationError if the document is not conformant."""
     if looks_like_envelope(doc):
         ENV.validate(doc)
         topic = topic_of(doc)
