@@ -1,0 +1,45 @@
+{
+  # Yggdrasil – optimierte Config für Nexus / LuminaOS
+  # Standort: Hannover / DE | Fokus: niedrige Latenz, stabile EU-Peers
+  # Version: 0.5.14
+
+  AdminListen: "tcp://127.0.0.1:9001"
+
+  PrivateKey: YOUR_PRIVATE_KEY_HERE  # yggdrasil -genconf
+
+  Peers: [
+    "tls://ygg1.mk16.de:1338?key=0000000087ee9949eeab56bd430ee8f324cad55abf3993ed9b9be63ce693e18a"
+    "tls://ygg2.mk16.de:1338?key=000000d80a2d7b3126ea65c8c08fc751088c491a5cdd47eff11c86fa1e4644ae"
+    "tls://ygg.mkg20001.io:443"
+    "tls://yggdrasil.su:62586"
+  ]
+
+  InterfacePeers: {}
+
+  Listen: [
+    "tls://0.0.0.0:0"
+  ]
+
+  MulticastInterfaces: [
+    {
+      Regex: "eth.*|en.*|wl.*|wlan.*"
+      Beacon: true
+      Listen: true
+      Password: ""
+    }
+  ]
+
+  AllowedPublicKeys: []
+  GroupPassword: ""
+
+  IfName: auto
+  IfMTU: 65535
+
+  NodeInfoPrivacy: false
+  NodeInfo: {
+    name: "nexus-lumina-hannover"
+    os: "linux"
+    stack: "nexus-luminaos"
+    location: "Hannover, DE"
+  }
+}

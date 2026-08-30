@@ -1,0 +1,31 @@
+# Nexus Lattice - Example Docker Compose for Mesh Core
+# Copy to docker-compose.yml and customize for your environment (Hannover/EU peers, Tor/I2P, monitoring)
+# Run: docker compose up -d
+
+version: '3.8'
+
+services:
+  yggdrasil:
+    image: ghcr.io/yggdrasil-network/yggdrasil:latest
+    container_name: nexus-yggdrasil
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./yggdrasil-config:/etc/yggdrasil
+      - yggdrasil-data:/var/lib/yggdrasil
+    environment:
+      - YGGDRASIL_LOGLEVEL=info
+
+  tor:
+    image: alpine:latest
+    container_name: nexus-tor
+    restart: unless-stopped
+    command: ["sh", "-c", "apk add --no-cache tor && tor"]
+    volumes:
+      - ./tor-config:/etc/tor
+    network_mode: host
+    depends_on:
+      - yggdrasil
+
+volumes:
+  yggdrasil-data:
