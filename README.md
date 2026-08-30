@@ -4,69 +4,55 @@
 
 > Licht. Netz. Intelligenz. Verbunden.
 
-## Vision
+## Start (Loopback)
 
-LuminaNet ist die öffentliche Schicht des Nexus-Stacks. Es macht ausgewählte Prototypen, Spezifikationen und Integrationsmuster sichtbar, ohne interne Betriebsgeheimnisse oder private Schlüssel preiszugeben.
+Nur `python3`, nur localhost:
 
-Schwerpunkte:
+```bash
+git pull
+chmod +x tools/start-luminanet.sh
+./tools/start-luminanet.sh
+```
 
-- **Lumina** — Licht-, Display- und Ambient-Systeme als physische Schnittstelle des Nexus
-- **Mesh** — resilienter Overlay (xMesh / NovaNet / QNET / Yggdrasil) als Kommunikationssubstrat
-- **Agentenschwärme** — koordinierte, persistente KI-Agenten (Lumia, Elara, Lyra, Xen) mit skilllogin-Kontinuität
-- **Dezentrale Infrastruktur** — Anbindung an Blockchain-Anreize, Privacy-Layer (Tor/I2P) und Edge-Prototypen
+Dann in einem zweiten Terminal:
+
+```bash
+curl -s http://127.0.0.1:8787/health
+curl -s -X POST http://127.0.0.1:8787/v0.1/envelope \
+  -H 'Content-Type: application/json' \
+  --data-binary @schema/examples/valid/envelope-dawn-scene-set.json
+```
+
+Details: [infra/loopback.md](infra/loopback.md)
 
 ## Status
 
-**v0.1 Entwurf** — Spezifikation, Protokoll, Schemas, Beispiele und Selbstprüfung.
+**v0.1 Entwurf + lokaler Knoten.**
 
 | Pfad | Inhalt |
 |---|---|
 | [docs/01-architecture.md](docs/01-architecture.md) | Schichten, Vertrauensgrenzen, Envelope, Topics |
 | [proto/lumina-protocol-v0.1.md](proto/lumina-protocol-v0.1.md) | Lumina-Knoten, Scene-Objekt, Safety |
 | [agents/public-interface-v0.1.md](agents/public-interface-v0.1.md) | Rollen, Caps, Ask/Say/Handoff |
-| [mesh/overlay-hints-v0.1.md](mesh/overlay-hints-v0.1.md) | Adressierung, TTL, Partition, Trust-Muster |
-| [schema/](schema/) | JSON Schema, gültige und ungültige Beispiele |
+| [mesh/overlay-hints-v0.1.md](mesh/overlay-hints-v0.1.md) | Adressierung, TTL, Partition |
+| [schema/](schema/) | JSON Schema und Beispiele |
+| [tools/luminanetd.py](tools/luminanetd.py) | Loopback-Knoten |
 | [tools/validate.py](tools/validate.py) | Kantenprüfer |
+
+Validator (optional, braucht `python3-jsonschema`):
 
 ```bash
 sudo apt install -y python3 python3-jsonschema
-git pull
 ./tools/run-validate.sh
-```
-
-Siehe auch [tools/README.md](tools/README.md).
-
-## Struktur
-
-```
-LuminaNet/
-├── docs/          Spezifikationen, Architektur, Protokolle
-├── proto/         Hardware- und Firmware-Skizzen (Lumina)
-├── mesh/          Overlay-Konfigurationen und Peer-Hinweise
-├── agents/        Öffentliche Agenten-Schnittstellen und Prompt-Muster
-├── schema/        JSON-Schemas und Beispiele
-├── tools/         Validator
-├── infra/         Deployment-Notizen, Container, Monitoring-Hooks
-└── LICENSE
 ```
 
 ## Leitsätze
 
 - Öffentlich, was lehren und verbinden soll — privat, was schützen muss.
-- Modular, selbst-dokumentierend, testbar.
-- Privacy by design. Keine Secrets im Repository.
-- Evolution statt Big-Bang: kleine, nachvollziehbare Commits.
+- Loopback bindet nie nach draußen.
 - Licht darf nach Partition nicht von allein eskalieren.
 - Schema prüft Form, nicht Vertrauen.
-
-## Mitwirken
-
-Issues und Pull Requests sind willkommen. Bitte keine Zugangsdaten, private Keys oder personenbezogene Daten committen.
 
 ## Lizenz
 
 Siehe [LICENSE](LICENSE).
-
----
-
-*Teil des Nexus-Ökosystems · Esslinger Consulting / digitaldesignerjazz*
