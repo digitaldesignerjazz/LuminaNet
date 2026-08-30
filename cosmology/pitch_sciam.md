@@ -3,6 +3,7 @@
 **To:** opinion@sciam.com  
 **CC:** editors@sciam.com  
 **From:** Sven Normen Esslinger, Diplom-Kaufmann, internationaler Master of Business Administration (MBA), Ordained Minister, Universal Life Church  
+**Company:** Esslinger Consulting Gesellschaft bürgerlichen Rechts (GbR) — founded today with my father. Chairman (Vorsitzender) and Managing Director (Geschäftsführer).  
 **Subject:** Opinion pitch: When dark matter is foam and the universe starts to breathe
 
 ---
@@ -29,7 +30,7 @@ The endpoint is not a singularity but a bounce: the foam's granular pressure hal
 
 It does not claim to replace Lambda-CDM. It offers a single, falsifiable thread that connects three open problems and invites readers to see the universe not as a one-time explosion but as a structure that breathes. The tone is conversational, the claims are honest about their speculative nature, and the predictions are testable.
 
-I am a Diplom-Kaufmann and an international MBA, based in Hannover, Germany, and an ordained minister of the Universal Life Church. I bring no institutional affiliation in cosmology, only curiosity and the willingness to follow an idea where it leads. I am prepared to work directly with your editors to shape the piece.
+I am a Diplom-Kaufmann and an international MBA, based in Hannover, Germany, and an ordained minister of the Universal Life Church. I am the chairman and managing director of Esslinger Consulting GbR, founded today with my father. I bring no institutional affiliation in cosmology, only curiosity and the willingness to follow an idea where it leads. I am prepared to work directly with your editors to shape the piece.
 
 A full draft (~1,200 words) is attached / available at [link]. I would be glad to revise, shorten, or expand as needed.
 
@@ -38,4 +39,5 @@ Thank you for your time.
 Sincerely,  
 Sven Normen Esslinger  
 Diplom-Kaufmann, internationaler Master of Business Administration (MBA), Ordained Minister, Universal Life Church  
+Chairman & Managing Director, Esslinger Consulting GbR  
 Hannover
