@@ -1,0 +1,14 @@
+{
+  "scene_id": "dawn-soft",
+  "priority": 1,
+  "hold_s": 1800,
+  "channels": {
+    "ambient": {
+      "mode": "rgb",
+      "rgb": [255, 214, 170],
+      "nits": 28,
+      "ease_ms": 4000
+    }
+  },
+  "rhythm": { "kind": "breathe", "period_ms": 12000, "depth": 0.08 }
+}

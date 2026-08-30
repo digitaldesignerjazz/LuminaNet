@@ -1,0 +1,13 @@
+{
+  "v": "0.1",
+  "id": "01K3QC-mesh-pong",
+  "ts": "2026-08-30T04:49:00Z",
+  "ttl_s": 10,
+  "in_reply_to": "01K3QC-mesh-ping",
+  "from": { "class": "mesh", "id": "node-local", "topic": "mesh.pong" },
+  "to":   { "class": "mesh", "topic": "mesh.ping" },
+  "body": {
+    "uptime_s": 3840,
+    "partition_hint": false
+  }
+}

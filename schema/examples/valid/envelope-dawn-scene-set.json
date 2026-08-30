@@ -1,0 +1,22 @@
+{
+  "v": "0.1",
+  "id": "01K3QA-dawn-set",
+  "ts": "2026-08-30T04:50:00Z",
+  "ttl_s": 15,
+  "from": { "class": "agent", "role": "lumia" },
+  "to":   { "class": "lumina", "zone": "atelier", "topic": "scene.set" },
+  "body": {
+    "scene_id": "dawn-soft",
+    "priority": 1,
+    "hold_s": 1800,
+    "channels": {
+      "ambient": {
+        "mode": "rgb",
+        "rgb": [255, 214, 170],
+        "nits": 28,
+        "ease_ms": 4000
+      }
+    },
+    "rhythm": { "kind": "breathe", "period_ms": 12000, "depth": 0.08 }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "v": "0.1",
+  "id": "01K3QE-bad-topic",
+  "ts": "2026-08-30T04:50:00Z",
+  "ttl_s": 15,
+  "from": { "class": "agent", "role": "lumia" },
+  "to":   { "class": "lumina", "topic": "scene.explode" },
+  "body": {}
+}

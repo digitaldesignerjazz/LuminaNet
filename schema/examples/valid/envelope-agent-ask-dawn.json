@@ -1,0 +1,13 @@
+{
+  "v": "0.1",
+  "id": "01K3Q9-ask-dawn",
+  "ts": "2026-08-30T04:52:00Z",
+  "ttl_s": 20,
+  "from": { "class": "agent", "role": "orchestrator" },
+  "to":   { "class": "agent", "role": "lumia", "topic": "agent.ask" },
+  "body": {
+    "intent": "scene.compose",
+    "input": { "mood": "dawn", "zone": "atelier", "priority": 1 },
+    "expect": ["scene.set", "agent.say"]
+  }
+}

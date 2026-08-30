@@ -1,0 +1,7 @@
+{
+  "scene_id": "too-much",
+  "priority": 5,
+  "channels": {
+    "ambient": { "mode": "off" }
+  }
+}

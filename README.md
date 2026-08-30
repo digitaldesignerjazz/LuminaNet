@@ -17,7 +17,7 @@ Schwerpunkte:
 
 ## Status
 
-**v0.1 Entwurf** — Spezifikation, Protokoll, Agenten-Schnittstelle, Overlay-Hinweise und JSON-Schema.
+**v0.1 Entwurf** — Spezifikation, Protokoll, Schemas, Beispiele und Selbstprüfung.
 
 | Pfad | Inhalt |
 |---|---|
@@ -25,7 +25,13 @@ Schwerpunkte:
 | [proto/lumina-protocol-v0.1.md](proto/lumina-protocol-v0.1.md) | Lumina-Knoten, Scene-Objekt, Safety |
 | [agents/public-interface-v0.1.md](agents/public-interface-v0.1.md) | Rollen, Caps, Ask/Say/Handoff |
 | [mesh/overlay-hints-v0.1.md](mesh/overlay-hints-v0.1.md) | Adressierung, TTL, Partition, Trust-Muster |
-| [schema/](schema/) | JSON Schema für Envelope, Scene, Agent-Bodies |
+| [schema/](schema/) | JSON Schema, gültige und ungültige Beispiele |
+| [tools/validate.py](tools/validate.py) | Kantenprüfer |
+
+```bash
+pip install -r tools/requirements.txt
+python tools/validate.py
+```
 
 ## Struktur
 
@@ -35,7 +41,8 @@ LuminaNet/
 ├── proto/         Hardware- und Firmware-Skizzen (Lumina)
 ├── mesh/          Overlay-Konfigurationen und Peer-Hinweise
 ├── agents/        Öffentliche Agenten-Schnittstellen und Prompt-Muster
-├── schema/        Maschinenlesbare JSON-Schemas
+├── schema/        JSON-Schemas und Beispiele
+├── tools/         Validator
 ├── infra/         Deployment-Notizen, Container, Monitoring-Hooks
 └── LICENSE
 ```

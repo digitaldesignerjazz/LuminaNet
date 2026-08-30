@@ -1,0 +1,16 @@
+{
+  "v": "0.1",
+  "id": "01K3QF-strobe",
+  "ts": "2026-08-30T04:50:00Z",
+  "ttl_s": 15,
+  "from": { "class": "agent", "role": "lumia" },
+  "to":   { "class": "lumina", "topic": "scene.set" },
+  "body": {
+    "scene_id": "unsafe-strobe",
+    "priority": 3,
+    "channels": {
+      "signal": { "mode": "rgb", "rgb": [255, 255, 255], "nits": 80 }
+    },
+    "rhythm": { "kind": "pulse", "period_ms": 120, "depth": 0.2 }
+  }
+}

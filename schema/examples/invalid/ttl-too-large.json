@@ -1,0 +1,9 @@
+{
+  "v": "0.1",
+  "id": "01K3QD-bad-ttl",
+  "ts": "2026-08-30T04:50:00Z",
+  "ttl_s": 90000,
+  "from": { "class": "agent", "role": "lumia" },
+  "to":   { "class": "lumina", "topic": "scene.get" },
+  "body": {}
+}

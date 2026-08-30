@@ -1,0 +1,15 @@
+{
+  "v": "0.1",
+  "id": "01K3QB-hello-lumia",
+  "ts": "2026-08-30T04:48:00Z",
+  "ttl_s": 30,
+  "from": { "class": "agent", "role": "lumia" },
+  "to":   { "class": "mesh", "topic": "agent.hello" },
+  "body": {
+    "role": "lumia",
+    "proto": "0.1",
+    "caps": ["scene.compose", "scene.set", "ask.route", "handoff.lyra", "handoff.xen"],
+    "languages": ["de", "en"],
+    "availability": "local-mesh"
+  }
+}
