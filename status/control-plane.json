@@ -1,0 +1,19 @@
+{
+  "v": "0.1",
+  "service": "nexus-control-plane",
+  "overlay": "luminanet",
+  "ts": "2026-09-01T03:24:00Z",
+  "state": "online",
+  "dataplane": "pending-host-privileges",
+  "loopback": {
+    "bind": "127.0.0.1:8787",
+    "node_id": "loopback-atelier",
+    "partition": false,
+    "scene_id": "fallback-warm"
+  },
+  "repos": {
+    "overlay": "digitaldesignerjazz/LuminaNet",
+    "cyberspace": "digitaldesignerjazz/LuminaCyberspace",
+    "nexus": "digitaldesignerjazz/nexus"
+  }
+}
